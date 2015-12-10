@@ -1,0 +1,147 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="userpage.SelfFragment">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_marginRight="100dip"
+        android:layout_marginLeft="100dip"
+        android:layout_marginBottom="290dip"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp"
+        android:src="@drawable/image1"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Photo"
+        android:id="@+id/EditPhoto"
+        android:textColor="#fff"
+        android:onClick="edit_photo"
+        android:background="@color/colorAccent"
+        android:layout_marginBottom="44dp"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_toRightOf="@+id/text_username"
+        android:layout_toEndOf="@+id/text_username" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="User Name"
+        android:ems="10"
+        android:id="@+id/text_username"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_alignStart="@+id/button3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Hometown"
+        android:ems="10"
+        android:id="@+id/text_hometown"
+        android:layout_marginTop="58dp"
+        android:layout_below="@+id/text_username"
+        android:layout_alignLeft="@+id/text_username"
+        android:layout_alignStart="@+id/text_username"
+        android:layout_alignTop="@+id/text_introduction" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Introduction"
+        android:ems="10"
+        android:id="@+id/text_introduction"
+        android:layout_below="@+id/text_username"
+        android:layout_alignLeft="@+id/text_hometown"
+        android:layout_alignStart="@+id/text_hometown"
+        android:layout_marginTop="48dp" />
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="User Name"
+        android:ems="10"
+        android:id="@+id/edit_username"
+        android:visibility="invisible"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_alignStart="@+id/button3" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Hometown"
+        android:visibility="invisible"
+        android:ems="10"
+        android:id="@+id/edit_hometown"
+        android:layout_marginTop="58dp"
+        android:layout_below="@+id/text_username"
+        android:layout_alignLeft="@+id/text_username"
+        android:layout_alignStart="@+id/text_username"
+        android:layout_alignTop="@+id/text_introduction" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Introduction"
+        android:visibility="invisible"
+        android:ems="10"
+        android:id="@+id/edit_introduction"
+        android:layout_below="@+id/text_username"
+        android:layout_alignLeft="@+id/text_hometown"
+        android:layout_alignStart="@+id/text_hometown"
+        android:layout_marginTop="48dp" />
+
+
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="# of &quot;Like&quot;"
+        android:id="@+id/button3"
+        android:textColor="#fff"
+        android:background="@color/colorAccent"
+        android:layout_above="@+id/button4"
+        android:layout_centerHorizontal="true" />
+
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="edit profile"
+        android:onClick="EditProfile"
+        android:id="@+id/button_edit_profile"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="save"
+        android:id="@+id/button_save_profile"
+        android:visibility="invisible"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/button4"
+        android:layout_alignEnd="@+id/button4" />
+
+
+</RelativeLayout>
