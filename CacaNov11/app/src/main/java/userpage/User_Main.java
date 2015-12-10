@@ -34,8 +34,6 @@ public class User_Main extends AppCompatActivity
 
     private static User user;
 
-    PostingFragment postFragment = new PostingFragment();
-
     PostFragment newPostFragment = new PostFragment();
     ChatFragment chattingFragment = new ChatFragment();
     //ChattingFragment chattingFragment = new ChattingFragment();
@@ -57,7 +55,6 @@ public class User_Main extends AppCompatActivity
 
 
         // Set the fragment initially
-        postFragment = new PostingFragment();
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, newPostFragment);
         fragmentTransaction.commit();
