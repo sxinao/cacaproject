@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff2e5"
     android:orientation="vertical">
 
     <LinearLayout
@@ -32,6 +33,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_below="@id/listView1"
+            android:layout_marginBottom="15dp"
+
             android:layout_weight="1" />
 
         <Button
@@ -41,6 +44,11 @@
             android:layout_alignParentBottom="true"
             android:layout_alignRight="@id/etPostpost"
             android:layout_below="@id/lvPostposts"
-            android:background="@drawable/ic_send_black_24dp" />
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="10dp"
+            android:text="POST"
+            android:textColor="#fff"
+            android:background="#60DFE5" />
+
     </LinearLayout>
 </LinearLayout>

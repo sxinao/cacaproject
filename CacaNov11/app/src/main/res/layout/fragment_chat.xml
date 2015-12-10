@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff2e5"
     android:orientation="vertical"
-    tools:context="com.example.mysocketclient.MainActivity"
-    android:background="#ffffff"
-    >
+    tools:context="com.example.mysocketclient.MainActivity">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -84,12 +83,14 @@
             android:layout_weight="1"
             android:width="0dp"
             android:ems="10"
+            android:layout_marginBottom="15dp"
             tools:ignore="TextFields" />
 
         <Button
             android:id="@+id/btnChatSend"
             android:layout_width="40dp"
             android:layout_height="30dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/ic_send_black_24dp" />
     </LinearLayout>
 </LinearLayout>
