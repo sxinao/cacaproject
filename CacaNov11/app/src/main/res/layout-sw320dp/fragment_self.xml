@@ -143,5 +143,23 @@
         android:layout_alignRight="@+id/button4"
         android:layout_alignEnd="@+id/button4" />
 
+    <Button
+        android:id="@+id/buttonQuit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="left|center_vertical"
+        android:onClick="QuitHandler"
+        android:text="Change a user" />
+
+    <Button
+        android:id="@+id/buttonQuitApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonQuit"
+        android:layout_gravity="right|center_vertical"
+        android:onClick="QuitHandlerApp"
+        android:text="Exit this App" />
+
 
 </RelativeLayout>

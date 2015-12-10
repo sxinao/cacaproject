@@ -39,7 +39,6 @@ public class User_Main extends AppCompatActivity
     //ChattingFragment chattingFragment = new ChattingFragment();
     FriendsFragment friendsFragment = new FriendsFragment();
     SelfFragment selfFragment = new SelfFragment();
-    QuitFragment quitFragment = new QuitFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,14 +132,6 @@ public class User_Main extends AppCompatActivity
             fragmentTransaction.commit();
 
         }
-        else if (id == R.id.nav_logout) {
-
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, quitFragment);
-            fragmentTransaction.commit();
-
-        }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
