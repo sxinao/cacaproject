@@ -6,54 +6,28 @@
     android:orientation="vertical"
     tools:context="login.RegisterActivity">
 
-    <TextView
-        android:id="@+id/tvSignTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="15dp"
-        android:text="Sign Up"
-        android:textSize="20dp" />
-
-    <TextView
-        android:id="@+id/tvSignUserId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvSignTitle"
-        android:layout_gravity="center_horizontal"
-        android:text="user Id" />
-
     <EditText
         android:id="@+id/etSignUserId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvUserId"
-        android:layout_gravity="center_horizontal" />
-
-    <TextView
-        android:id="@+id/tvSignPwd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etUserId"
         android:layout_gravity="center_horizontal"
-        android:text="password" />
-
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:ellipsize="start"
+        android:hint="Please enter a unique user ID" />
 
     <EditText
         android:id="@+id/etSignPwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvSignPwd"
-        android:layout_gravity="center_horizontal" />
-
-    <TextView
-        android:id="@+id/tvSignUserName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etUserId"
         android:layout_gravity="center_horizontal"
-        android:text="user name" />
-
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:hint="Please enter your password" />
 
     <EditText
         android:id="@+id/etSignUserName"
@@ -61,16 +35,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvSignUserName"
         android:layout_gravity="center_horizontal"
-        android:text="default"/>
-
-    <TextView
-        android:id="@+id/tvSignImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etSignImage"
-        android:layout_gravity="center_horizontal"
-        android:text="image" />
-
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:text="default Username" />
 
     <EditText
         android:id="@+id/etSignImage"
@@ -78,32 +46,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvSignImage"
         android:layout_gravity="center_horizontal"
-        android:text="0x7f02004b"/>
-
-    <TextView
-        android:id="@+id/tvSignIsMale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etSignImage"
-        android:layout_gravity="center_horizontal"
-        android:text="gender" />
-
-
-    <EditText
-        android:id="@+id/etSignIsMale"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvSignIsMale"
-        android:layout_gravity="center_horizontal"
-        android:text="false"/>
-
-    <TextView
-        android:id="@+id/tvSignWhatsUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etSignIsMale"
-        android:layout_gravity="center_horizontal"
-        android:text="What's up" />
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:text="0x7f02004b" />
 
 
     <EditText
@@ -112,12 +58,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvSignWhatsUp"
         android:layout_gravity="center_horizontal"
-        android:text="hello"/>
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:text="hello" />
 
     <Button
         android:id="@+id/btnSignSubmit"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Sign up" />
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginTop="30dp"
+        android:background="#00d5df"
+        android:text="Now Post on CaCa !"
+        android:textColor="#fff" />
 </LinearLayout>

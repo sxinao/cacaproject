@@ -37,7 +37,6 @@ public class RegisterActivity extends AppCompatActivity {
         etPwd = (EditText) findViewById(R.id.etSignPwd);
         etUserName=(EditText) findViewById(R.id.etSignUserName);
         etImage = (EditText) findViewById(R.id.etSignImage);
-        etIsMale = (EditText) findViewById(R.id.etSignIsMale);
         etWhatsUp = (EditText) findViewById(R.id.etSignWhatsUp);
         findViewById(R.id.btnSignSubmit).setOnClickListener(new View.OnClickListener() {
             @Override
