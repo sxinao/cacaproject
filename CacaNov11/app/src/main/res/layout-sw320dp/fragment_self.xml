@@ -1,159 +1,172 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff2e5"
+    android:orientation="vertical"
     tools:context="userpage.SelfFragment">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="290dip"
-        android:layout_marginLeft="100dip"
-        android:layout_marginRight="100dip"
-        android:layout_marginTop="65dp"
-        android:src="@drawable/image1" />
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/EditPhoto"
-        android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/image1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView"
-        android:layout_marginBottom="44dp"
-        android:layout_toEndOf="@+id/text_username"
-        android:layout_toRightOf="@+id/text_username"
-        android:onClick="edit_photo"
-        android:text="Edit Photo"
-        android:background="#00d5df"
-        android:textColor="#fff"/>
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/EditPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:background="#00d5df"
+            android:onClick="edit_photo"
+            android:text="Edit Photo"
+            android:textColor="#fff" />
 
-    <TextView
-        android:id="@+id/text_username"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/button_edit_profile"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:background="#00d5df"
+            android:onClick="EditProfile"
+            android:text="edit profile"
+            android:textColor="#fff" />
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3"
-        android:layout_centerVertical="true"
-        android:ems="10"
-        android:hint="User Name"
-        android:inputType="textPersonName" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/text_hometown"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/text_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:hint="User Name"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/edit_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:ems="10"
+            android:hint="User Name"
+            android:inputType="textPersonName"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/text_hometown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_username"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:ems="10"
+            android:hint="Hometown"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/text_introduction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_username"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:ems="10"
+            android:hint="Introduction"
+            android:inputType="textPersonName" />
+
+
+
+        <EditText
+            android:id="@+id/edit_hometown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/text_username"
+            android:layout_alignStart="@+id/text_username"
+            android:layout_alignTop="@+id/text_introduction"
+            android:layout_below="@+id/text_username"
+            android:layout_marginTop="58dp"
+            android:ems="10"
+            android:hint="Hometown"
+            android:inputType="textPersonName"
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/edit_introduction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/text_hometown"
+            android:layout_alignStart="@+id/text_hometown"
+            android:layout_below="@+id/text_username"
+            android:layout_marginTop="48dp"
+            android:ems="10"
+            android:hint="Introduction"
+            android:inputType="textPersonName"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/button_save_profile"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/button4"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/button4"
+            android:background="#00d5df"
+            android:text="save"
+            android:textColor="#fff"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/text_username"
-        android:layout_alignStart="@+id/text_username"
-        android:layout_alignTop="@+id/text_introduction"
-        android:layout_below="@+id/text_username"
-        android:layout_marginTop="58dp"
-        android:ems="10"
-        android:hint="Hometown"
-        android:inputType="textPersonName" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/text_introduction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/text_hometown"
-        android:layout_alignStart="@+id/text_hometown"
-        android:layout_below="@+id/text_username"
-        android:layout_marginTop="48dp"
-        android:ems="10"
-        android:hint="Introduction"
-        android:inputType="textPersonName" />
+        <Button
+            android:id="@+id/buttonQuit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:background="#00d5df"
+            android:onClick="QuitHandler"
+            android:text="Change a user"
+            android:textColor="#fff" />
 
+        <Button
+            android:id="@+id/buttonQuitApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buttonQuit"
+            android:layout_gravity="right|center_vertical"
+            android:background="#00d5df"
+            android:onClick="QuitHandlerApp"
+            android:text="Exit this App"
+            android:textColor="#fff" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/edit_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3"
-        android:layout_centerVertical="true"
-        android:ems="10"
-        android:hint="User Name"
-        android:inputType="textPersonName"
-        android:visibility="invisible" />
-
-    <EditText
-        android:id="@+id/edit_hometown"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/text_username"
-        android:layout_alignStart="@+id/text_username"
-        android:layout_alignTop="@+id/text_introduction"
-        android:layout_below="@+id/text_username"
-        android:layout_marginTop="58dp"
-        android:ems="10"
-        android:hint="Hometown"
-        android:inputType="textPersonName"
-        android:visibility="invisible" />
-
-    <EditText
-        android:id="@+id/edit_introduction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/text_hometown"
-        android:layout_alignStart="@+id/text_hometown"
-        android:layout_below="@+id/text_username"
-        android:layout_marginTop="48dp"
-        android:ems="10"
-        android:hint="Introduction"
-        android:inputType="textPersonName"
-        android:visibility="invisible" />
-
-    <Button
-        android:id="@+id/button_edit_profile"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:onClick="EditProfile"
-        android:text="edit profile"
-        android:background="#00d5df"
-        android:textColor="#fff"/>
-
-    <Button
-        android:id="@+id/button_save_profile"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/button4"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/button4"
-        android:text="save"
-        android:visibility="invisible"
-        android:background="#00d5df"
-        android:textColor="#fff"/>
-
-    <Button
-        android:id="@+id/buttonQuit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left|center_vertical"
-        android:layout_marginTop="50dp"
-        android:onClick="QuitHandler"
-        android:text="Change a user"
-        android:background="#00d5df"
-        android:textColor="#fff"/>
-
-    <Button
-        android:id="@+id/buttonQuitApp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonQuit"
-        android:layout_gravity="right|center_vertical"
-        android:onClick="QuitHandlerApp"
-        android:text="Exit this App"
-        android:background="#00d5df"
-        android:textColor="#fff"/>
-
-
-</RelativeLayout>
+</LinearLayout>
