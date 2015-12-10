@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:background="#fff2e5"
+    android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="45dp"
+        android:layout_marginBottom="20dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -35,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15sp"
                     android:text="Lucy"
-                    android:textSize="30sp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/number"
@@ -44,8 +45,8 @@
                     android:layout_marginLeft="15sp"
                     android:text="650-000-0000"
                     android:textSize="15sp" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>
