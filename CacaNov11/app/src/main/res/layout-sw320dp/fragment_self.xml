@@ -25,10 +25,10 @@
         android:layout_marginBottom="44dp"
         android:layout_toEndOf="@+id/text_username"
         android:layout_toRightOf="@+id/text_username"
-        android:background="@color/colorAccent"
         android:onClick="edit_photo"
         android:text="Edit Photo"
-        android:textColor="#fff" />
+        android:background="#00d5df"
+        android:textColor="#fff"/>
 
 
     <TextView
@@ -114,9 +114,9 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/button4"
         android:layout_centerHorizontal="true"
-        android:background="@color/colorAccent"
         android:text="# of &quot;Like&quot;"
-        android:textColor="#fff" />
+        android:background="#00d5df"
+        android:textColor="#fff"/>
 
 
     <Button
@@ -128,7 +128,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:onClick="EditProfile"
-        android:text="edit profile" />
+        android:text="edit profile"
+        android:background="#00d5df"
+        android:textColor="#fff"/>
 
     <Button
         android:id="@+id/button_save_profile"
@@ -139,7 +141,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/button4"
         android:text="save"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:background="#00d5df"
+        android:textColor="#fff"/>
 
     <Button
         android:id="@+id/buttonQuit"
@@ -148,7 +152,9 @@
         android:layout_gravity="left|center_vertical"
         android:layout_marginTop="50dp"
         android:onClick="QuitHandler"
-        android:text="Change a user" />
+        android:text="Change a user"
+        android:background="#00d5df"
+        android:textColor="#fff"/>
 
     <Button
         android:id="@+id/buttonQuitApp"
@@ -157,7 +163,9 @@
         android:layout_below="@+id/buttonQuit"
         android:layout_gravity="right|center_vertical"
         android:onClick="QuitHandlerApp"
-        android:text="Exit this App" />
+        android:text="Exit this App"
+        android:background="#00d5df"
+        android:textColor="#fff"/>
 
 
 </RelativeLayout>

@@ -3,7 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
     android:background="#fff2e5"
     android:orientation="vertical"
     tools:context="com.example.mysocketclient.MainActivity">
@@ -11,7 +11,8 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="60dp">
 
         <EditText
             android:id="@+id/etChatIp"
@@ -27,7 +28,10 @@
             android:id="@+id/btnChatConnect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#60DFE5"
             android:text="Connect"
+            android:layout_margin="5dp"
+            android:textColor="#fff"
             tools:ignore="HardcodedText" />
     </LinearLayout>
 
@@ -50,7 +54,10 @@
             android:id="@+id/btnChatIds"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#60DFE5"
+            android:layout_margin="5dp"
             android:text="UserId2"
+            android:textColor="#fff"
             tools:ignore="HardcodedText" />
     </LinearLayout>
 
@@ -80,10 +87,10 @@
             android:id="@+id/etChatInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
             android:layout_weight="1"
             android:width="0dp"
             android:ems="10"
-            android:layout_marginBottom="15dp"
             tools:ignore="TextFields" />
 
         <Button
@@ -91,6 +98,9 @@
             android:layout_width="40dp"
             android:layout_height="30dp"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/ic_send_black_24dp" />
+            android:layout_marginRight="10dp"
+            android:background="#60DFE5"
+            android:text="POST"
+            android:textColor="#fff" />
     </LinearLayout>
 </LinearLayout>
