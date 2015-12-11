@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:orientation="vertical">
 
         <ImageView
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-25dp"
-            android:ems="10"
+            android:ems="15"
             android:hint="Please enter a user Name"
             android:inputType="textPersonName"
             android:visibility="invisible" />
@@ -85,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-25dp"
-            android:ems="10"
+            android:ems="15"
             android:hint="Please enter your hometown"
             android:inputType="textPersonName"
             android:visibility="invisible" />
@@ -102,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-25dp"
-            android:ems="10"
+            android:ems="15"
             android:hint="Please enter your description"
             android:inputType="textPersonName"
             android:visibility="invisible" />
@@ -114,8 +114,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:background="#00d5df"
-            android:text="save info"
             android:ems="7"
+            android:text="save info"
             android:textColor="#fff"
             android:visibility="invisible" />
     </LinearLayout>
@@ -124,8 +124,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:orientation="horizontal"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/buttonQuit"
@@ -135,9 +135,10 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:background="#fff2e5"
+            android:layout_weight="2"
             android:onClick="QuitHandler"
             android:text="Change a user"
-            android:textColor="#00d5df" />
+            android:textColor="#efb67d" />
 
         <Button
             android:id="@+id/buttonQuitApp"
@@ -146,10 +147,11 @@
             android:layout_gravity="bottom"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:layout_weight="2"
             android:background="#fff2e5"
             android:onClick="QuitHandlerApp"
             android:text="Exit this App"
-            android:textColor="#00d5df" />
+            android:textColor="#efb67d" />
     </LinearLayout>
 
 </LinearLayout>
