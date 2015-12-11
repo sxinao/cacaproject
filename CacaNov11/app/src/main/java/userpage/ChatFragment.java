@@ -51,30 +51,11 @@ public class ChatFragment extends android.support.v4.app.Fragment implements MyC
 
         View view = inflater.inflate(R.layout.fragment_chat, null);
 
-        ip = (EditText) view.findViewById(R.id.etChatIp);
         input = (EditText) view.findViewById(R.id.etChatInput);
         chatShow = (TextView) view.findViewById(R.id.tvChatChatShow);
-        etuserId2 = (EditText) view.findViewById(R.id.etChatUserId2);
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("HH:mm");
         time = format.format(date);
-
-        view.findViewById(R.id.btnChatConnect).setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                String ipAddress = ip.getText().toString().trim();
-                connect(ipAddress);
-            }
-        });
-
-        view.findViewById(R.id.btnChatIds).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, MyConf.USERID + "----------------");
-                userId2 = Integer.parseInt(etuserId2.getText().toString());
-                Log.i(TAG, userId2 + "-------------");
-            }
-        });
 
         view.findViewById(R.id.btnChatSend).setOnClickListener(new View.OnClickListener() {
 

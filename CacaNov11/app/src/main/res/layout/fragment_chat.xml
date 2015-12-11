@@ -14,25 +14,6 @@
         android:orientation="horizontal"
         android:layout_marginTop="60dp">
 
-        <EditText
-            android:id="@+id/etChatIp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:width="0dp"
-            android:ems="10"
-            android:text="172.29.92.91"
-            tools:ignore="TextFields,HardcodedText" />
-
-        <Button
-            android:id="@+id/btnChatConnect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#60DFE5"
-            android:text="Connect"
-            android:layout_margin="5dp"
-            android:textColor="#fff"
-            tools:ignore="HardcodedText" />
     </LinearLayout>
 
     <LinearLayout
@@ -40,25 +21,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/etChatUserId2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:width="0dp"
-            android:ems="10"
-            android:text="5556"
-            tools:ignore="TextFields,HardcodedText" />
-
-        <Button
-            android:id="@+id/btnChatIds"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#60DFE5"
-            android:layout_margin="5dp"
-            android:text="UserId2"
-            android:textColor="#fff"
-            tools:ignore="HardcodedText" />
     </LinearLayout>
 
 
@@ -100,7 +62,7 @@
             android:layout_marginBottom="15dp"
             android:layout_marginRight="10dp"
             android:background="#60DFE5"
-            android:text="POST"
+            android:text="SEND"
             android:textColor="#fff" />
     </LinearLayout>
 </LinearLayout>
