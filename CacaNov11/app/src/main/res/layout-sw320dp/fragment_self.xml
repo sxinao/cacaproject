@@ -52,7 +52,6 @@
     </LinearLayout>
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -61,18 +60,16 @@
             android:id="@+id/text_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:ems="10"
-            android:hint="User Name"
-            android:inputType="textPersonName" />
+            android:text="User Name"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/edit_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="-25dp"
             android:ems="10"
-            android:hint="User Name"
+            android:hint="Please enter a user Name"
             android:inputType="textPersonName"
             android:visibility="invisible" />
 
@@ -80,50 +77,33 @@
             android:id="@+id/text_hometown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text_username"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp"
-            android:ems="10"
-            android:hint="Hometown"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:id="@+id/text_introduction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text_username"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp"
-            android:ems="10"
-            android:hint="Introduction"
-            android:inputType="textPersonName" />
-
-
+            android:text="Hometown"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/edit_hometown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/text_username"
-            android:layout_alignStart="@+id/text_username"
-            android:layout_alignTop="@+id/text_introduction"
-            android:layout_below="@+id/text_username"
-            android:layout_marginTop="58dp"
+            android:layout_marginTop="-25dp"
             android:ems="10"
-            android:hint="Hometown"
+            android:hint="Please enter your hometown"
             android:inputType="textPersonName"
             android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/text_introduction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="description"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/edit_introduction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/text_hometown"
-            android:layout_alignStart="@+id/text_hometown"
-            android:layout_below="@+id/text_username"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="-25dp"
             android:ems="10"
-            android:hint="Introduction"
+            android:hint="Please enter your description"
             android:inputType="textPersonName"
             android:visibility="invisible" />
 
@@ -132,41 +112,44 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/button4"
-            android:layout_alignParentBottom="true"
-            android:layout_alignRight="@+id/button4"
+            android:layout_gravity="center_horizontal"
             android:background="#00d5df"
-            android:text="save"
+            android:text="save info"
+            android:ems="7"
             android:textColor="#fff"
             android:visibility="invisible" />
-
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp">
 
         <Button
             android:id="@+id/buttonQuit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left|center_vertical"
-            android:background="#00d5df"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#fff2e5"
             android:onClick="QuitHandler"
             android:text="Change a user"
-            android:textColor="#fff" />
+            android:textColor="#00d5df" />
 
         <Button
             android:id="@+id/buttonQuitApp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/buttonQuit"
-            android:layout_gravity="right|center_vertical"
-            android:background="#00d5df"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#fff2e5"
             android:onClick="QuitHandlerApp"
             android:text="Exit this App"
-            android:textColor="#fff" />
+            android:textColor="#00d5df" />
     </LinearLayout>
 
 </LinearLayout>
