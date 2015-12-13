@@ -1,4 +1,4 @@
-package userpage;
+package fragment;
 
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -9,36 +9,35 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import com.caca.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.net.UnknownHostException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import configuration.MyConf;
+import entities.User;
+import service.ChatService;
 
 
 public class ChatFragment extends android.support.v4.app.Fragment implements MyConf {
-    private EditText ip;
     private EditText input;
     private TextView chatShow;
     // temp
-    EditText etuserId2;
     final String TAG = "ChatFragment";
     private int userId2;
     private String time;
+
+    private BufferedReader bReader = null;
+    private BufferedWriter bWriter = null;
 
     public ChatFragment() {
         // Required empty public constructor
@@ -50,12 +49,19 @@ public class ChatFragment extends android.support.v4.app.Fragment implements MyC
         super.onCreate(savedInstanceState);
 
         View view = inflater.inflate(R.layout.fragment_chat, null);
-
         input = (EditText) view.findViewById(R.id.etChatInput);
         chatShow = (TextView) view.findViewById(R.id.tvChatChatShow);
+
         Date date = new Date();
         DateFormat format = new SimpleDateFormat("HH:mm");
         time = format.format(date);
+
+        bReader = ChatService.br;
+        bWriter = ChatService.bw;
+        openThread();
+        Log.i(TAG, "executed therad");
+        userId2 = PostFragment.getUserId2();
+        Log.i(TAG, "userId2=" + userId2);
 
         view.findViewById(R.id.btnChatSend).setOnClickListener(new View.OnClickListener() {
 
@@ -67,35 +73,18 @@ public class ChatFragment extends android.support.v4.app.Fragment implements MyC
         return view;
     }
 
-// ------------------------------------------------------------
-
-    Socket socket = null;
-    BufferedReader bReader = null;
-    BufferedWriter bWriter = null;
-
-    public void connect(final String ipAddress) {
+    // ------------------------------------------------------------
+    public void openThread() {
         AsyncTask<String, String, Void> read = new AsyncTask<String, String, Void>() {
 
             @Override
             protected Void doInBackground(String... params) {
                 try {
-                    socket = new Socket(ipAddress, 80);
-                    bReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                    bWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"));
-                    publishProgress("@success");
-                    //-----------init---------
-                    JSONObject jInit = new JSONObject();
-                    try {
-                        jInit.put("method", 0);
-                        jInit.put("userId", MyConf.USERID);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    bWriter.write(jInit + "\n");
-                    bWriter.flush();
-                    //-----------init end---------
                     String line;
+                    Log.i(TAG, "-----waitin for line ");
+                    Log.i(TAG,"active count="+Thread.activeCount());
                     while ((line = bReader.readLine()) != null) {
+                        Log.i(TAG, line);
                         publishProgress(line);
                     }
                 } catch (UnknownHostException e) {
@@ -108,18 +97,16 @@ public class ChatFragment extends android.support.v4.app.Fragment implements MyC
 
             protected void onProgressUpdate(String... values) {
                 super.onProgressUpdate(values);
-                if (values[0].equals("@success"))
-                    Toast.makeText(getActivity().getApplicationContext(), "connection succeeded", Toast.LENGTH_SHORT).show();
-                else {
-                    // parse json msg
-                    String msg="";
-                    try {
-                        JSONObject jMsg = new JSONObject(values[0]);
-                        msg = jMsg.getString("msg");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                Log.i(TAG,"value="+values[0]);
+                // parse json msg
+                String msg = "";
+                try {
+                    JSONObject jMsg = new JSONObject(values[0]);
+                    msg = jMsg.getString("msg");
                     chatShow.append(msg + "\n");
+                    Log.i(TAG,"appended");
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
         };
@@ -131,7 +118,7 @@ public class ChatFragment extends android.support.v4.app.Fragment implements MyC
             chatShow.append("I: " + msg + "\n");
             JSONObject jMsg = new JSONObject();
             jMsg.put("method", 2);
-            jMsg.put("userId", MyConf.USERID);
+            jMsg.put("userId", User.getUserId());
             jMsg.put("userId2", userId2);
             jMsg.put("msg", msg);
             jMsg.put("time", time);
@@ -147,7 +134,7 @@ public class ChatFragment extends android.support.v4.app.Fragment implements MyC
     }
 
 
-    // ---------------------------------------------------------
+// ---------------------------------------------------------
 
     /**
      * This interface must be implemented by activities that contain this
@@ -162,21 +149,5 @@ public class ChatFragment extends android.support.v4.app.Fragment implements MyC
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        System.out.println("Chat onDestroyView");
-        try {
-            if (socket != null)
-                socket.close();
-            if (bReader != null)
-                bReader.close();
-            if (bWriter != null)
-                bWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

@@ -4,7 +4,6 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_posts"
-            android:fontFamily="sans-serif-thin"
             android:icon="@android:drawable/ic_menu_add"
             android:title="Posts" />
         <item
@@ -19,6 +18,10 @@
             android:id="@+id/nav_self"
             android:icon="@android:drawable/ic_menu_edit"
             android:title="Self" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@android:drawable/ic_menu_close_clear_cancel"
+            android:title="Log Out" />
 
     </group>
 

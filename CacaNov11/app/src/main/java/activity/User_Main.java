@@ -1,10 +1,15 @@
-package userpage;
+package activity;
 
+import android.app.Service;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -22,8 +27,18 @@ import android.widget.TextView;
 
 import com.caca.R;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+
 import entities.User;
-import login.MainActivity;
+import fragment.ChatFragment;
+import fragment.FriendsFragment;
+import fragment.PostFragment;
+import fragment.PostingFragment;
+import fragment.QuitFragment;
+import fragment.SelfFragment;
+import service.ChatService;
+import service.SocketService;
 
 public class User_Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,18 +49,56 @@ public class User_Main extends AppCompatActivity
 
     private static User user;
 
+    PostingFragment postFragment = new PostingFragment();
+
     PostFragment newPostFragment = new PostFragment();
     ChatFragment chattingFragment = new ChatFragment();
     //ChattingFragment chattingFragment = new ChattingFragment();
     FriendsFragment friendsFragment = new FriendsFragment();
     SelfFragment selfFragment = new SelfFragment();
+    QuitFragment quitFragment = new QuitFragment();
+
+    public static BufferedReader br;
+    public static BufferedWriter bw;
+
+    public static ChatService mService; // service instance
+    private boolean mBound = false; // whether the service in bound or not
+
+    public ChatService getService() {
+        return mService;
+    }
+
+
+    // service connection
+    private ServiceConnection mConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName className, IBinder service){
+            // get the service instance
+            ChatService.ChatClientBinder binder = (ChatService.ChatClientBinder) service;
+            mService = binder.getService();
+            br = mService.br;
+            bw = mService.bw;
+            mBound = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName comp) {
+            mBound = false;
+        }
+    };
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user__main);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+
+        Intent intent_service = new Intent(this, ChatService.class);
+        bindService(intent_service, mConnection, Context.BIND_AUTO_CREATE);
 
         // Set the user
         Intent intent = this.getIntent();
@@ -54,6 +107,7 @@ public class User_Main extends AppCompatActivity
 
 
         // Set the fragment initially
+        postFragment = new PostingFragment();
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, newPostFragment);
         fragmentTransaction.commit();
@@ -132,6 +186,14 @@ public class User_Main extends AppCompatActivity
             fragmentTransaction.commit();
 
         }
+        else if (id == R.id.nav_logout) {
+
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, quitFragment);
+            fragmentTransaction.commit();
+
+        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -159,6 +221,27 @@ public class User_Main extends AppCompatActivity
         startActivityForResult(i, RESULT_LOAD_IMAGE);
     }
 
+    public void save(View view) {
+
+        EditText etUserName = (EditText) findViewById(R.id.edit_username);
+        EditText etIntro = (EditText) findViewById(R.id.edit_introduction);
+        EditText etHomeTown = (EditText) findViewById(R.id.edit_hometown);
+        TextView tvUserName = (TextView) findViewById(R.id.text_username);
+        TextView tvIntro = (TextView) findViewById(R.id.text_introduction);
+        TextView tvHomeTown = (TextView) findViewById(R.id.text_hometown);
+
+
+        etUserName.setVisibility(View.INVISIBLE);
+        etIntro.setVisibility(View.INVISIBLE);
+        etHomeTown.setVisibility(View.INVISIBLE);
+
+        tvUserName.setText(etUserName.getText().toString());
+        tvUserName.setVisibility(View.VISIBLE);
+        tvIntro.setText(etIntro.getText().toString());
+        tvIntro.setVisibility(View.VISIBLE);
+        tvHomeTown.setText(etHomeTown.getText().toString());
+        tvHomeTown.setVisibility(View.VISIBLE);
+    }
 
     public void EditProfile(View view) {
         TextView text_username = (TextView)findViewById(R.id.text_username);
@@ -190,6 +273,8 @@ public class User_Main extends AppCompatActivity
 
     }
 
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -206,6 +291,17 @@ public class User_Main extends AppCompatActivity
         }
     }
 
+
+
+
+    @Override
+    protected void onDestroy() {
+
+        if(mBound)
+            unbindService(mConnection);
+        super.onDestroy();
+
+    }
 
 
 }

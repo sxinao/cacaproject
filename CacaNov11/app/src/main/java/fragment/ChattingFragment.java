@@ -1,4 +1,4 @@
-package userpage;
+package fragment;
 
 
 import android.os.Bundle;
@@ -13,9 +13,10 @@ import com.caca.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SelfFragment extends Fragment {
+public class ChattingFragment extends Fragment {
 
-    public SelfFragment() {
+
+    public ChattingFragment() {
         // Required empty public constructor
     }
 
@@ -24,11 +25,7 @@ public class SelfFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View self_view = inflater.inflate(R.layout.fragment_self, container, false);
-
-
-
-        return self_view;
+        return inflater.inflate(R.layout.fragment_chating, container, false);
     }
 
 

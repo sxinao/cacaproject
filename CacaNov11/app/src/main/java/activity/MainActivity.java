@@ -1,8 +1,15 @@
-package login;
+package activity;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
+
+import service.ChatService.ChatClientBinder;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -24,7 +31,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 
-import userpage.User_Main;
+import service.ChatService;
 
 public class MainActivity extends AppCompatActivity {
     private EditText etId;
@@ -40,6 +47,11 @@ public class MainActivity extends AppCompatActivity {
     private static BufferedWriter bWriter = null;
     private final String TAG = "MainActivity";
 
+
+    private ChatService mService; // service instance
+    private boolean mBound = false; // whether the service in bound or not
+
+
     public static Socket getSocket() {
         return socket;
     }
@@ -52,19 +64,64 @@ public class MainActivity extends AppCompatActivity {
         return bWriter;
     }
 
+
+    private ServiceConnection mConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName className, IBinder service){
+            // get the service instance
+            ChatClientBinder binder = (ChatClientBinder) service;
+            mService = binder.getService();
+            mBound = true;
+
+            if(mService.isConnected()){
+               // connectionStarted();
+                Log.e(TAG, "Connected!");
+            }
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName className) {
+            mBound = false;
+        }
+    };
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = new Intent(this, ChatService.class);
+        startService(intent);
+        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+
+
+
         setContentView(R.layout.activity_main);
+//        try {
+//            socket = new Socket(MyConf.HOST, MyConf.PORT);
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
         if (getIntent().getBooleanExtra("EXIT", false)) {
             finish();
         }
         isGotten = false;
         isValid = false;
         isRunning = true;
-        connect();
+
+//        startService(new Intent(MainActivity.this, ChatService.class));
+//
+//        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+
+        //doBindService();
+
+        Log.e("Debug", "I am here2");
+
+        //connect();
         etId = (EditText) findViewById(R.id.userID);
         etPwd = (EditText) findViewById(R.id.password);
+
+        connect();
 
         findViewById(R.id.btnLogin).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,15 +186,27 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+
+
     public void connect() {
         AsyncTask<String, String, Void> read = new AsyncTask<String, String, Void>() {
             @Override
             protected Void doInBackground(String... params) {
 
                 try {
-                    socket = new Socket(MyConf.HOST, MyConf.PORT);
-                    bReader = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
-                    bWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"));
+         //           socket = new Socket(MyConf.HOST, MyConf.PORT);
+//                    //Intent intent = new Intent(MainActivity.this, SocketService.class);
+//                    //startService(intent);
+//                    //
+//                    //socket = SocketService.socket;
+//
+                    //bReader = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
+                    //bWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "UTF-8"));
+                    while(bReader==null ||bWriter ==null) {
+                        bReader = mService.br;
+                        bWriter = mService.bw;
+                    }
                     Log.i(TAG, "bwriter=" + bWriter);
                     if (socket != null)
                         publishProgress("@success");
@@ -208,16 +277,24 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+
+        if(mBound)
+            unbindService(mConnection);
         super.onDestroy();
-//        try {
-//            if (socket != null)
-//                socket.close();
-//            if (bReader != null)
-//                bReader.close();
-//            if (bWriter != null)
-//                bWriter.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+
+    }
+
+
+
+    public void Connect(View view) {
+        Intent intent = new Intent(this, ChatService.class);
+        startService(intent);
+        //bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+
+    }
+
+    public void DisConnect(View view) {
+        stopService(new Intent(this, ChatService.class));
+
     }
 }

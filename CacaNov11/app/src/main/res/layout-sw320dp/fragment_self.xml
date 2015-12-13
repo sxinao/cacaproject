@@ -115,6 +115,7 @@
             android:layout_gravity="center_horizontal"
             android:background="#00d5df"
             android:ems="7"
+            android:onClick="save"
             android:text="save info"
             android:textColor="#fff"
             android:visibility="invisible" />

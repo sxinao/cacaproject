@@ -39,7 +39,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="login.MainActivity"
+            android:name="activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -58,12 +58,18 @@
             android:label="@string/title_activity_login" >
         </activity>
         <activity
-            android:name="userpage.User_Main"
+            android:name="activity.User_Main"
             android:label="Caca"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        <activity android:name="login.RegisterActivity" >
+        <activity android:name="activity.RegisterActivity" >
         </activity>
+
+        <service android:name="service.ChatService"
+                 android:enabled="true"
+                 android:exported="true"
+            ></service>
+
     </application>
 
 </manifest>

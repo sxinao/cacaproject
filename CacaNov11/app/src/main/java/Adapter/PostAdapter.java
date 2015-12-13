@@ -20,7 +20,6 @@ import org.w3c.dom.Text;
 
 
 public class PostAdapter extends ArrayAdapter<String> {
-    // declare
 
     private List<Post> posts;
     private Context c;

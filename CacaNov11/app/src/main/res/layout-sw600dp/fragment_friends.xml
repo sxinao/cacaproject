@@ -2,12 +2,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="userpage.FriendsFragment">
+    tools:context="fragment.FriendsFragment">
 
-    <ListView
+
+     <ListView
+        android:layout_marginTop="100sp"
         android:id="@+id/friendsListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="100sp"></ListView>
+        >
+    </ListView>
 </LinearLayout>
